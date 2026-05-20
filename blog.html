@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Articles — Mon Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0e0c; --cream: #f5f0e8; --accent: #c8502a;
+      --warm: #e8dcc8; --muted: #7a7060; --card-bg: #fffdf8;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 2rem; border-bottom:1.5px solid var(--ink); background:var(--cream); position:sticky; top:0; z-index:100; }
+    .logo { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; }
+    .logo span { color:var(--accent); font-style:italic; }
+    nav a { font-size:0.85rem; font-weight:500; color:var(--ink); text-decoration:none; letter-spacing:0.05em; text-transform:uppercase; margin-left:1.5rem; transition:color 0.2s; }
+    nav a:hover { color:var(--accent); }
+
+    .page-header {
+      padding: 3rem 2rem 2rem;
+      border-bottom: 1.5px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+    }
+    .page-header h1 em { color: var(--accent); font-style: italic; }
+    .article-count { font-size: 0.85rem; color: var(--muted); }
+
+    /* SEARCH */
+    .search-bar {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--warm);
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .search-bar input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--ink);
+      background: var(--card-bg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .search-bar input:focus { border-color: var(--accent); }
+    .filter-btn {
+      padding: 0.7rem 1.2rem;
+      border: 1.5px solid var(--ink);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    /* ARTICLES LIST */
+    .articles-list {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .article-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid var(--warm);
+      cursor: pointer;
+      transition: background 0.2s;
+      align-items: start;
+    }
+    .article-item:hover { background: var(--warm); margin: 0 -1rem; padding-left: 2rem; padding-right: 2rem; }
+    .article-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--warm);
+      line-height: 1;
+      min-width: 60px;
+      text-align: right;
+      font-weight: 700;
+    }
+    .article-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .article-info .cat {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .article-info p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+    .article-info .meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* MODAL */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(15,14,12,0.7); z-index:200; align-items:center; justify-content:center; padding:1rem; }
+    .modal-overlay.active { display:flex; }
+    .modal { background:var(--cream); max-width:680px; width:100%; max-height:90vh; overflow-y:auto; border:1.5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); }
+    .modal-header { padding:2rem; border-bottom:1px solid var(--warm); position:sticky; top:0; background:var(--cream); display:flex; justify-content:space-between; align-items:start; }
+    .modal-close { background:none; border:none; cursor:pointer; font-size:1.5rem; color:var(--muted); }
+    .modal-body { padding:2rem; }
+    .modal-body h2 { font-family:'Playfair Display',serif; font-size:2rem; line-height:1.2; margin-bottom:1rem; }
+    .modal-body .meta { font-size:0.8rem; color:var(--muted); margin-bottom:2rem; }
+    .modal-body .content { font-size:1rem; line-height:1.8; color:#2a2520; }
+    .modal-body .content p { margin-bottom:1.2rem; }
+
+    .empty-state { text-align:center; padding:4rem 2rem; color:var(--muted); }
+    .empty-state p { font-family:'Playfair Display',serif; font-size:1.5rem; }
+
+    footer { border-top:1.5px solid var(--ink); padding:1.5rem 2rem; display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; color:var(--muted); flex-wrap:wrap; gap:0.5rem; margin-top:2rem; }
+    .logo-sm { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; }
+
+    @media(max-width:600px){
+      nav { padding:1rem; }
+      nav a { margin-left:0.8rem; font-size:0.75rem; }
+      .article-item { grid-template-columns: 1fr; gap:0.5rem; }
+      .article-number { display:none; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">Mon<span>Blog</span></div>
+  <div>
+    <a href="index.html">Accueil</a>
+    <a href="blog.html">Articles</a>
+    <a href="admin.html">✏️ Admin</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Tous les <em>articles</em></h1>
+  <span class="article-count" id="count"></span>
+</div>
+
+<div class="search-bar">
+  <input type="text" id="search" placeholder="🔍 Rechercher un article..." oninput="filterArticles()"/>
+</div>
+
+<div class="articles-list" id="list"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="cat" id="modal-cat" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);font-weight:500;"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-title"></h2>
+      <div class="meta" id="modal-meta"></div>
+      <div class="content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="logo-sm">Mon<span style="color:var(--accent);font-style:italic">Blog</span></span>
+  <span>© 2026 — Hébergé sur GitHub Pages</span>
+</footer>
+
+<script src="articles.js"></script>
+<script>
+  let filtered = [];
+
+  function filterArticles() {
+    const q = document.getElementById('search').value.toLowerCase();
+    filtered = ARTICLES.filter(a =>
+      a.title.toLowerCase().includes(q) ||
+      a.excerpt.toLowerCase().includes(q) ||
+      a.category.toLowerCase().includes(q)
+    );
+    render();
+  }
+
+  function render() {
+    const list = document.getElementById('list');
+    document.getElementById('count').textContent = filtered.length + ' article' + (filtered.length > 1 ? 's' : '');
+    if (filtered.length === 0) {
+      list.innerHTML = '<div class="empty-state"><p>Aucun article trouvé</p></div>';
+      return;
+    }
+    list.innerHTML = filtered.map((a, i) => `
+      <div class="article-item" onclick="openModal(${a.id})">
+        <div class="article-number">0${i+1}</div>
+        <div class="article-info">
+          <div class="cat">${a.category}</div>
+          <h2>${a.title}</h2>
+          <p>${a.excerpt}</p>
+          <div class="meta">
+            <span>📅 ${a.date}</span>
+            <span>${a.readTime} min de lecture</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openModal(id) {
+    const a = ARTICLES.find(x => x.id === id);
+    if (!a) return;
+    document.getElementById('modal-cat').textContent = a.category;
+    document.getElementById('modal-title').textContent = a.title;
+    document.getElementById('modal-meta').textContent = `📅 ${a.date}  •  ${a.readTime} min de lecture`;
+    document.getElementById('modal-content').innerHTML = a.content.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+    document.getElementById('modal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  filtered = [...ARTICLES];
+  render();
+</script>
+</body>
+</html>

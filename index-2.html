@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mon Blog International</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0e0c;
+      --cream: #f5f0e8;
+      --accent: #c8502a;
+      --warm: #e8dcc8;
+      --muted: #7a7060;
+      --card-bg: #fffdf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      border-bottom: 1.5px solid var(--ink);
+      background: var(--cream);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); font-style: italic; }
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .hero-text {
+      padding: 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1.5px solid var(--ink);
+    }
+    .hero-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em { color: var(--accent); font-style: italic; }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0.85rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.1s;
+      width: fit-content;
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .hero-visual {
+      background: var(--warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 3rem;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(200, 80, 42, 0.12);
+      top: -50px; right: -80px;
+    }
+    .featured-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--ink);
+      padding: 2rem;
+      max-width: 340px;
+      position: relative;
+      box-shadow: 6px 6px 0 var(--ink);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .featured-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+    .featured-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.3;
+      margin-bottom: 0.8rem;
+    }
+    .featured-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .featured-meta {
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* ── ARTICLES SECTION ── */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 2.5rem 2rem 1.5rem;
+      border-bottom: 1px solid var(--warm);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+    }
+    .section-link {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0;
+    }
+
+    .article-card {
+      border-right: 1px solid var(--warm);
+      border-bottom: 1px solid var(--warm);
+      padding: 2rem;
+      background: var(--card-bg);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .article-card:hover { background: var(--warm); }
+    .article-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+    .article-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      line-height: 1.35;
+      margin-bottom: 0.8rem;
+    }
+    .article-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
+    .article-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--warm);
+      padding-top: 1rem;
+    }
+
+    /* ── NEWSLETTER BANNER ── */
+    .newsletter {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .newsletter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      max-width: 400px;
+    }
+    .newsletter h2 em { color: var(--accent); font-style: italic; }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+    }
+    .newsletter-form input {
+      padding: 0.85rem 1.2rem;
+      font-size: 0.9rem;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: var(--cream);
+      outline: none;
+      width: 240px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .newsletter-form input::placeholder { color: rgba(245,240,232,0.4); }
+    .newsletter-form button {
+      padding: 0.85rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .newsletter-form button:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1.5px solid var(--ink);
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer .logo { font-size: 1rem; }
+
+    /* ── MODAL ARTICLE ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(15,14,12,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--cream);
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1.5px solid var(--ink);
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+    .modal-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--warm);
+      position: sticky; top: 0;
+      background: var(--cream);
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+    .modal-close {
+      background: none; border: none; cursor: pointer;
+      font-size: 1.5rem; color: var(--muted);
+    }
+    .modal-body { padding: 2rem; }
+    .modal-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .modal-body .meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      display: flex; gap: 1rem;
+    }
+    .modal-body .content {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #2a2520;
+    }
+    .modal-body .content p { margin-bottom: 1.2rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { border-right: none; border-bottom: 1.5px solid var(--ink); padding: 2.5rem 1.5rem; }
+      .hero-visual { display: none; }
+      nav { padding: 1rem; }
+      .nav-links a { margin-left: 0.8rem; font-size: 0.75rem; }
+      .newsletter { flex-direction: column; }
+      .newsletter-form { flex-direction: column; width: 100%; }
+      .newsletter-form input { width: 100%; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Mon<span>Blog</span></div>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="blog.html">Articles</a>
+    <a href="admin.html">✏️ Admin</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-label">✦ Blog International</div>
+    <h1 class="hero-title">Des idées qui <em>traversent</em> les frontières</h1>
+    <p class="hero-sub">Bienvenue sur mon espace d'expression. Des articles rédigés depuis mon téléphone, partagés avec le monde entier.</p>
+    <a href="blog.html" class="btn-primary">Lire les articles →</a>
+  </div>
+  <div class="hero-visual">
+    <div class="featured-card">
+      <div class="featured-tag">✦ Article à la une</div>
+      <h3>Comment j'ai commencé à bloguer depuis mon téléphone</h3>
+      <p>Un voyage, une idée, quelques mots tapés sur un écran — et une communauté qui grandit chaque jour.</p>
+      <div class="featured-meta">
+        <span>📅 Avril 2026</span>
+        <span>5 min de lecture</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES RÉCENTS -->
+<div class="section-header">
+  <h2 class="section-title">Articles récents</h2>
+  <a href="blog.html" class="section-link">Tous les articles →</a>
+</div>
+
+<div class="articles-grid" id="articles-grid">
+  <!-- Rempli par JS depuis articles.js -->
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Restez <em>informé</em> de chaque nouvelle publication</h2>
+  <div class="newsletter-form">
+    <input type="email" placeholder="votre@email.com" />
+    <button>S'abonner</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Mon<span style="color:var(--accent);font-style:italic">Blog</span></div>
+  <span>© 2026 — Tous droits réservés</span>
+  <span>Fait avec ❤️ — Hébergé sur GitHub Pages</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="article-category" id="modal-cat"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <h2 id="modal-title"></h2>
+      <div class="meta" id="modal-meta"></div>
+      <div class="content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
+
+<script src="articles.js"></script>
+<script>
+  // Affiche les 6 derniers articles sur la home
+  function renderHome() {
+    const grid = document.getElementById('articles-grid');
+    const recent = ARTICLES.slice(0, 6);
+    grid.innerHTML = recent.map(a => `
+      <div class="article-card" onclick="openModal(${a.id})">
+        <div class="article-category">${a.category}</div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+        <div class="article-meta">
+          <span>📅 ${a.date}</span>
+          <span>${a.readTime} min de lecture</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openModal(id) {
+    const a = ARTICLES.find(x => x.id === id);
+    if (!a) return;
+    document.getElementById('modal-cat').textContent = a.category;
+    document.getElementById('modal-title').textContent = a.title;
+    document.getElementById('modal-meta').textContent = `📅 ${a.date}  •  ${a.readTime} min de lecture`;
+    document.getElementById('modal-content').innerHTML = a.content.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+    document.getElementById('modal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  renderHome();
+</script>
+</body>
+</html>
