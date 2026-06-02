@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portail Créatif - Illustrations & Designs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-palette"></i> Mon Portail Créatif
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                    <li><a href="#galerie" class="nav-link">Galerie</a></li>
+                    <li><a href="#boutique" class="nav-link">Boutique</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bienvenue dans mon univers créatif</h1>
+                <p>Découvrez mes illustrations, designs uniques et mon univers artistique</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('boutique').scrollIntoView({behavior: 'smooth'})">
+                        Explorer la boutique
+                    </button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('blog').scrollIntoView({behavior: 'smooth'})">
+                        Lire le blog
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="placeholder-image">
+                    <i class="fas fa-image"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="gallery">
+        <div class="container">
+            <h2>Galerie de mes créations</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Illustration 1</h3>
+                    <p>Une création unique et colorée</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Design 1</h3>
+                    <p>Design moderne et épuré</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Illustration 2</h3>
+                    <p>Création inspirée de la nature</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Design 2</h3>
+                    <p>Design vibrant et dynamique</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Illustration 3</h3>
+                    <p>Création botaniste</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Design 3</h3>
+                    <p>Design luxueux et élégant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique -->
+    <section id="boutique" class="shop">
+        <div class="container">
+            <h2>Boutique - Mes créations à vendre</h2>
+            <div class="shop-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-print"></i>
+                        <span class="badge">Nouveau</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Poster - Illustration Abstraite</h3>
+                        <p>Magnifique poster 50x70cm en haute qualité</p>
+                        <div class="product-details">
+                            <span class="price">25€</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(24 avis)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>T-shirt Design Original</h3>
+                        <p>T-shirt premium avec mon design exclusif</p>
+                        <div class="product-details">
+                            <span class="price">20€</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(18 avis)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-book"></i>
+                        <span class="badge sale">-15%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Carnet de Croquis</h3>
+                        <p>Carnet avec couverture illustrée - 200 pages</p>
+                        <div class="product-details">
+                            <span class="price">17€ <del>20€</del></span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(12 avis)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Fichier Digital - Illustration</h3>
+                        <p>Fichier haute résolution à télécharger</p>
+                        <div class="product-details">
+                            <span class="price">8€</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(31 avis)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Mug Personnalisé</h3>
+                        <p>Mug 350ml avec mon illustration exclusive</p>
+                        <div class="product-details">
+                            <span class="price">12€</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(45 avis)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Canvas Premium</h3>
+                        <p>Toile 40x60cm avec impression haute qualité</p>
+                        <div class="product-details">
+                            <span class="price">45€</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(22 avis)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-cart">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2>Mon Blog - Partage d'idées et d'inspirations</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">2 juin 2026</span>
+                        <h3>L'importance de la créativité au quotidien</h3>
+                        <p>Dans cet article, j'explore comment intégrer la créativité dans notre vie quotidienne et pourquoi c'est essentiel pour notre bien-être...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-user"></i> Solo12w</span>
+                            <span><i class="fas fa-comment"></i> 12 commentaires</span>
+                        </div>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">28 mai 2026</span>
+                        <h3>Mon processus créatif : du concept à la réalisation</h3>
+                        <p>Découvrez les différentes étapes de mon processus créatif, de l'inspiration initiale jusqu'à la finalisation d'une illustration...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-user"></i> Solo12w</span>
+                            <span><i class="fas fa-comment"></i> 8 commentaires</span>
+                        </div>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">22 mai 2026</span>
+                        <h3>Les tendances du design 2026 que j'adore</h3>
+                        <p>Une analyse des tendances design actuelles et comment je les intègre dans mes propres créations pour rester moderne et pertinent...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-user"></i> Solo12w</span>
+                            <span><i class="fas fa-comment"></i> 24 commentaires</span>
+                        </div>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">15 mai 2026</span>
+                        <h3>Comment trouver l'inspiration quand on est en panne</h3>
+                        <p>Des conseils pratiques et des techniques que j'utilise personnellement pour surmonter le blocage créatif et retrouver mon inspiration...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-user"></i> Solo12w</span>
+                            <span><i class="fas fa-comment"></i> 18 commentaires</span>
+                        </div>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">8 mai 2026</span>
+                        <h3>Les outils que je recommande pour les créatifs</h3>
+                        <p>Une revue complète des logiciels, matériels et ressources que j'utilise quotidiennement pour créer mes illustrations et designs...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-user"></i> Solo12w</span>
+                            <span><i class="fas fa-comment"></i> 32 commentaires</span>
+                        </div>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">1 mai 2026</span>
+                        <h3>Lancer sa propre entreprise créative : mon histoire</h3>
+                        <p>Je partage mon parcours pour devenir illustratrice/designer indépendante, les défis rencontrés et les leçons que j'en ai tiré...</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-user"></i> Solo12w</span>
+                            <span><i class="fas fa-comment"></i> 45 commentaires</span>
+                        </div>
+                        <a href="#" class="read-more">Lire la suite →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="newsletter">
+                <div class="newsletter-content">
+                    <h3>Abonnez-vous à ma newsletter</h3>
+                    <p>Recevez mes derniers articles, inspirations et offres exclusives directement dans votre boîte mail</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre adresse email" required>
+                        <button type="submit" class="btn btn-primary">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bonjour ! Je suis une illustratrice et designer passionnée par la création. Depuis plusieurs années, je développe mon univers artistique unique combinant techniques traditionnelles et outils numériques.</p>
+                    <p>Ma mission est de créer des œuvres qui inspirent, ravissent et transforment les espaces. Chaque création est le fruit d'une réflexion créative approfondie et d'un amour sincère pour mon art.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">500</div>
+                            <p>Créations</p>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2000</div>
+                            <p>Clients heureux</p>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <p>Années d'expérience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="placeholder-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Me Contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@monportailcreatif.fr</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Localisation</h4>
+                            <p>France</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+33 (0)X XX XX XX XX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Sujet">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Votre message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Mon Portail Créatif</h4>
+                    <p>Illustrations et designs uniques pour inspirer et transformer</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                        <li><a href="#boutique">Boutique</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations légales</h4>
+                    <ul>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de retour</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mon Portail Créatif. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
