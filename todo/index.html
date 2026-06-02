@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App - Manage Your Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <i class="fas fa-tasks"></i> My Todo List
+                </h1>
+                <p>Stay organized and productive</p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="todo-input" 
+                        placeholder="Add a new task... (e.g., Buy groceries)"
+                        autocomplete="off"
+                    >
+                    <button class="add-btn" id="addBtn">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                </div>
+                <div class="input-options">
+                    <select id="prioritySelect" class="priority-select">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <input type="date" id="dueDateInput" class="due-date-input">
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon total">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Total Tasks</span>
+                        <span class="stat-value" id="totalTasks">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon completed">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Completed</span>
+                        <span class="stat-value" id="completedTasks">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Pending</span>
+                        <span class="stat-value" id="pendingTasks">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon high-priority">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">High Priority</span>
+                        <span class="stat-value" id="highPriorityTasks">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> All
+                </button>
+                <button class="filter-btn" data-filter="active">
+                    <i class="fas fa-circle"></i> Active
+                </button>
+                <button class="filter-btn" data-filter="completed">
+                    <i class="fas fa-check"></i> Completed
+                </button>
+                <button class="filter-btn" data-filter="high">
+                    <i class="fas fa-star"></i> High Priority
+                </button>
+                <button class="clear-completed" id="clearCompleted">
+                    <i class="fas fa-trash"></i> Clear Completed
+                </button>
+            </div>
+
+            <!-- Todo List -->
+            <div class="todo-list-wrapper">
+                <ul class="todo-list" id="todoList"></ul>
+                <div class="empty-state" id="emptyState">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No tasks yet</h3>
+                    <p>Create your first task to get started!</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Todo List App | <span id="lastUpdated">Never synced</span></p>
+            <div class="footer-actions">
+                <button class="export-btn" id="exportBtn" title="Export tasks">
+                    <i class="fas fa-download"></i> Export
+                </button>
+                <button class="import-btn" id="importBtn" title="Import tasks">
+                    <i class="fas fa-upload"></i> Import
+                </button>
+                <input type="file" id="fileInput" accept=".json" style="display: none;">
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
