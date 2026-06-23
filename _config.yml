@@ -1,0 +1,6 @@
+theme: jekyll-theme-slate
+title: Concepts et Vision
+description: Site de promotion des œuvres créatives et vision sur les enjeux du temps
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
